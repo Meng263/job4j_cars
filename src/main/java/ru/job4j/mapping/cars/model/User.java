@@ -1,4 +1,4 @@
-package ru.job4j.mapping.cars_drivers.model;
+package ru.job4j.mapping.cars.model;
 
 import jakarta.persistence.*;
 

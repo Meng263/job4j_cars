@@ -1,4 +1,4 @@
-package ru.job4j.mapping.cars_drivers.model;
+package ru.job4j.mapping.cars.model;
 
 import jakarta.persistence.*;
 
@@ -11,15 +11,6 @@ public class Ads {
 
     private String description;
 
-    @Column(name = "car_model")
-    private String carModel;
-
-    @Column(name = "car_brand")
-    private String  carBrand;
-
-    @Column(name = "body_type")
-    private String bodyType;
-
     @Column(name = "photo_link")
     private String photoLink;
 
@@ -29,6 +20,10 @@ public class Ads {
 
     @Column(name = "state")
     private AdsState state;
+
+    @ManyToOne()
+    @JoinColumn(name = "car_id", referencedColumnName = "id")
+    private Car car;
 
     public long getId() {
         return id;
@@ -46,30 +41,6 @@ public class Ads {
         this.description = description;
     }
 
-    public String getCarModel() {
-        return carModel;
-    }
-
-    public void setCarModel(String carModel) {
-        this.carModel = carModel;
-    }
-
-    public String getCarBrand() {
-        return carBrand;
-    }
-
-    public void setCarBrand(String carBrand) {
-        this.carBrand = carBrand;
-    }
-
-    public String getBodyType() {
-        return bodyType;
-    }
-
-    public void setBodyType(String bodyType) {
-        this.bodyType = bodyType;
-    }
-
     public String getPhotoLink() {
         return photoLink;
     }
@@ -84,6 +55,14 @@ public class Ads {
 
     public void setAuthor(User author) {
         this.author = author;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     public AdsState getState() {
